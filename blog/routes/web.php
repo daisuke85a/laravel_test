@@ -15,6 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hello/{msg}',function($msg){
-    return '<html><body><h1>Hello</h1><p>This is ' . $msg . ' page.</p></body></html>';
-});
+Route::get('hello', 'HelloController@index');
