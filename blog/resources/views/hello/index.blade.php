@@ -8,9 +8,16 @@
 @endsection
 
 @section('content')
-    <p>ここが本文のコンテンツです</p>
-    <p>Controller value<br>'message' = {{$message}}</p>
-    <p>ViewComposer value<br>'view_message' = {{$view_message}}</p>
+    <table>
+        <tr><th>Name</th><th>Mail</th><th>Age</th></tr>
+        @foreach ($items as $item)
+            <tr>
+            <td>{{$item->name}}</td>
+            <td>{{$item->mail}}</td>
+            <td>{{$item->age}}</td>
+            </tr>
+        @endforeach
+    </table>
 @endsection
 
 @section('footer')
