@@ -1,33 +1,17 @@
-<html>
+@extends('layout.helloapp')
 
-<head>
-    <style>
-        body {
-            font-size: 16px;
-            color: #999;
-        }
+@section('title', 'Index')
 
-        h1 {
-            font-size: 100px;
-            text-align: right;
-            color: #eee;
-            margin: -40px 0px -50px 0px;
-        }
+@section('menubar')
+    @parent
+    インデックスページ
+@endsection
 
-    </style>
-</head>
+@section('content')
+<p>ここが本文のコンテンツです</p>
+<p>必要なだけ記述できます</p>
+@endsection
 
-<body>
-    <h1>Blade/Index</h1>
-    @isset($msg)
-    <p>こんにちは、{{$msg}}さん。</p>
-    @else
-    <p>何か書いてください。</p>
-    @endisset
-    <form method="POST" action="/hello">
-        {{csrf_field()}}
-        <input type="text" name="msg">
-        <input type="submit">
-    </form>
-</body>
-<html>
+@section('footer')
+copyright 2017 tuyano.
+@endsection
