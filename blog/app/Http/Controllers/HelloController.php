@@ -24,6 +24,16 @@ function tag($tag, $txt){
 
 class HelloController extends Controller
 {
+    public function __invoke(){
+        global $head, $style, $body, $end;
+
+        $html = $head . tag('title','Hello') . $style . $body 
+        . tag('h1','Single Ancion') . tag('p','これはシングルアクションコントローラのアクションです')
+        . $end;        
+        return $html;
+
+    }
+
     public function index($id='noname', $pass='unknown'){
         global $head, $style, $body, $end;
 
