@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 global $head, $style, $body, $end;
+
 $head = '<html><head>';
 $style = <<<EOF
 <style>
@@ -24,37 +26,20 @@ function tag($tag, $txt){
 
 class HelloController extends Controller
 {
-    public function __invoke(){
+    public function index(Request $request, Response $response){
         global $head, $style, $body, $end;
 
         $html = $head . tag('title','Hello') . $style . $body 
-        . tag('h1','Single Ancion') . tag('p','これはシングルアクションコントローラのアクションです')
+        . tag('h1','Hello') . tag('h3','Request') . tag('pre' , $request)
+        . tag('h3', 'Response') . tag('pre' , $response)
         . $end;        
-        return $html;
+
+        $response->setContent($html);
+
+        return $response;
 
     }
 
-    public function index($id='noname', $pass='unknown'){
-        global $head, $style, $body, $end;
-
-        $html = $head . tag('title','Hello/Index') . $style . $body 
-        . tag('h1','index') . tag('p','this is Index page')
-        . '<a href="/hello/other">go to Other page</a>'
-        . $end;
-        
-        return $html;
-    }
-
-    public function other(){
-        global $head, $style, $body, $end;
-
-        $html = $head . tag('title','Hello/Other') . $style . 
-        $body 
-        . tag('h1','Other') . tag('p' , 'this is Other page')
-        . $end;
-
-        return $html;
-    }
 
 }
 
